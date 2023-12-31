@@ -9,7 +9,6 @@ import GAMES_DATA from "./games.js";
 
 // create a list of objects to store the data about the games using JSON.parse
 const GAMES_JSON = JSON.parse(GAMES_DATA);
-console.log(GAMES_JSON);
 
 // remove all child elements from a parent element in the DOM
 function deleteChildElements(parent) {
@@ -140,10 +139,40 @@ allBtn.addEventListener("click", showAllGames);
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
+function CountFilterUnfundedOnly() {
+  deleteChildElements(gamesContainer);
+
+  // use filter() to get a list of games that have not yet met their goal
+  const listOfUnmetFunding = GAMES_JSON.filter((games) => {
+    return games.pledged < games.goal;
+  });
+
+  const FinallistOfUnmetFunding = listOfUnmetFunding.reduce(
+    (totalGames, listOfUnmetFunding) => {
+      return totalGames + 1;
+    },
+    0
+  );
+
+  return FinallistOfUnmetFunding;
+}
+
+const unfundedGames = CountFilterUnfundedOnly();
 
 // create a string that explains the number of unfunded games using the ternary operator
+const statement =
+  unfundedGames === 1
+    ? `A total of $${totalRaised.toLocaleString(
+        "en-US"
+      )} has been raised for ${totalGames} games. Currently, ${unfundedGames} game remains unfunded. We need your help to fund these amazing games!`
+    : `A total of $${totalRaised.toLocaleString(
+        "en-US"
+      )} has been raised for ${totalGames} games. Currently, ${unfundedGames} games remain unfunded. We need your help to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
+const descriptionStatement = document.createElement("descriptionStatement");
+descriptionStatement.innerHTML = `<p>${statement}</p>`;
+descriptionContainer.appendChild(descriptionStatement);
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
