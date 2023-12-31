@@ -22,9 +22,7 @@ The following **optional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented features:
-
-<img src='https://imgur.com/a/6Hn76Yq' title='LARRY QUOC LA WEB 102 PREWORK - Video Walkthrough' width='' alt='Video Walkthrough' />
-![prework-gif](https://imgur.com/a/6Hn76Yq.gif)
+Pre-work Gif Link Igmur - (https://imgur.com/a/6Hn76Yq.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 
