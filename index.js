@@ -35,7 +35,13 @@ function addGamesToPage(games) {
     gameCard.classList.add("game-card");
 
     // set the inner HTML using a template literal to display some info about each game
-    gameCard.innerHTML = `<img src="${game.img}" alt="game img" class="game-img"> <br></br> <p>${game.name} <br></br> ${game.description} <br></br> ${game.backers} Investors</p>`;
+    gameCard.innerHTML = `<img src="${
+      game.img
+    }" alt="game img" class="game-img"> <br></br> <h1> ${
+      game.name
+    } </h1>  <p> ${
+      game.description
+    } <br></br> Backers: ${game.backers.toLocaleString("en-US")}</p>`;
 
     // append the game to the games-container\
     gamesContainer.appendChild(gameCard);
@@ -191,3 +197,6 @@ const sortedGames = GAMES_JSON.sort((item1, item2) => {
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 
 // do the same for the runner up item
+
+// calling game function
+addGamesToPage(GAMES_JSON);
